@@ -7,6 +7,7 @@ const refs = {
     form: document.querySelector('.form'),
     cardContainer: document.querySelector('.card-container'),
     dallery: document.querySelector('.gallery'),
+    loader: document.querySelector('.loader'),
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
@@ -25,8 +26,11 @@ function onFormSubmit(event) {
         return
     }
 
+    refs.loader.classList.remove('hidden');
+
     fetchImg(query.value.trim())
       .then(data => {
+        refs.loader.classList.add('hidden');
         if(data.hits.length === 0) {
             iziToast.warning({
                 title: 'Warning',
@@ -40,6 +44,7 @@ function onFormSubmit(event) {
         form.reset();
     })
     .catch(error => {
+        refs.loader.classList.add('hidden');
         iziToast.error({
             title: 'Error',
             message: error.message,
