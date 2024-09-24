@@ -5,51 +5,31 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-5ObWk2rO.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-DumFYO8Z.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-Bj87OzqJ.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-CRIFpO6F.css">
   </head>
   <body>
     <form class="form">
        <label>
-        <input class="form-input" type="text" name="query" placeholder="Search images..." />
+        <input class="form-input" type="text" name="query" placeholder="Search images..." required/>
       </label>
       <button type="submit" class="form-btn">Search</button>
+
+      <div class="loader">
+        Loading images, please wait...
+      </div>
     </form>
+
       
     <div class="card-container">
-       <ul class="gallery">
-        <!--<li class="gallery-item">
-           <a class="gallery-link" href="">
-            <img 
-             class="gallery-image" 
-             src="" 
-             alt="" 
-             />
-           </a>
-     <div class="card-description">
-      <div class="field">
-        <span class="span-name">Likes</span>
-        <span class="span-value"></span>
-      </div>
-      <div class="field"></div>
-        <span class="span-name">Views</span>
-        <span class="span-value"></span>
-      </div>
-      <div class="field"></div>
-        <span class="span-name">Comments</span>
-        <span class="span-value"></span>
-      </div>
-      <div class="field"></div>
-        <span class="span-name">Downloads</span>
-        <span class="span-value"></span>
-      </div>
-    </div>
-   </li>-->
-    </ul>
+       <ul class="gallery"></ul>
     </div>
 
-    <span class="loader"></span>
+
   </body>
 </html>
