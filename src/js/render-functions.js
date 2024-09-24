@@ -11,15 +11,23 @@ export function createMarkup(hits, gallery) {
              alt="" 
              />
            </a>
-    <div class="card-description">
-      <ul class="descr-list">
-        <li class="descr-item">
-          <p class="descr-paragraph">Likes</p>
-          <p class="descr-paragraph">Views</p>
-          <p class="descr-paragraph">Comments</p>
-          <p class="descr-paragraph">Downloads</p>
-        </li>
-      </ul>
+     <div class="card-description">
+      <div class="field">
+        <span class="span-name">Likes</span>
+        <span class="span-value">${hit.likes}</span>
+      </div>
+      <div class="field"></div>
+        <span class="span-name">Views</span>
+        <span class="span-value">${hit.views}</span>
+      </div>
+      <div class="field"></div>
+        <span class="span-name">Comments</span>
+        <span class="span-value">${hit.comments}</span>
+      </div>
+      <div class="field"></div>
+        <span class="span-name">Downloads</span>
+        <span class="span-value">${hit.downloads}</span>
+      </div>
     </div>
    </li>`).join('');
  
