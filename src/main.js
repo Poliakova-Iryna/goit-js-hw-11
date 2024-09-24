@@ -1,54 +1,39 @@
+import { fetchImages } from "./js/pixabay-api";
+import { renderImages, showLoader, hideLoader } from "./js/render-functions";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-import { fetchImg } from './js/pixabay-api';
-import { createMarkup } from "./js/render-functions";
 
-const refs = {
-    form: document.querySelector('.form'),
-    cardContainer: document.querySelector('.card-container'),
-    dallery: document.querySelector('.gallery'),
-    loader: document.querySelector('.loader'),
-};
+const searchForm = document.querySelector('.form');
+const gallery = new SimpleLightbox('.gallery a', {
+    caption: true,
+    captionDelay: 250,
+});
 
-refs.form.addEventListener('submit', onFormSubmit);
-
-function onFormSubmit(event) {
+searchForm.addEventListener('submit', event  => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const { query } = form.elements;
 
-    if(!query.value.trim()) {
-        iziToast.error({
-            title: 'Error',
-            message: 'Please enter a search term',
-            position: 'topRight'
-        });
+    const query = event.target.elements.query.value.trim();
+    if(!query) {
         return
-    }
+    };
 
-    refs.loader.classList.remove('hidden');
+    showLoader();
 
-    fetchImg(query.value.trim())
-      .then(data => {
-        refs.loader.classList.add('hidden');
-        if(data.hits.length === 0) {
-            iziToast.warning({
-                title: 'Warning',
-                message: error.message,
-                position: 'topRight'
-            });
-            return
-        }
-
-        createMarkup(data.hits, refs.gallery);
-        form.reset();
+    fetchImages(query)
+    .then(images => {
+        renderImages(images);
+        gallery.refresh();
     })
     .catch(error => {
-        refs.loader.classList.add('hidden');
         iziToast.error({
             title: 'Error',
-            message: error.message,
+            message: 'Sorry, there are no images matching your search query. Please try again!',
             position: 'topRight'
         });
-    });
-}
+    })
+    .finally(() => {
+        hideLoader();
+    })
+})

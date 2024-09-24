@@ -5,49 +5,31 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <form class="form">
        <label>
-        <input class="form-input" type="text" name="query" placeholder="Search images..." />
+        <input class="form-input" type="text" name="query" placeholder="Search images..." required/>
       </label>
       <button type="submit" class="form-btn">Search</button>
+
+      <div class="loader">
+        Loading images, please wait...
+      </div>
     </form>
+
       
     <div class="card-container">
-       <ul class="gallery">
-        <!--<li class="gallery-item">
-           <a class="gallery-link" href="">
-            <img 
-             class="gallery-image" 
-             src="" 
-             alt="" 
-             />
-           </a>
-     <div class="card-description">
-      <div class="field">
-        <span class="span-name">Likes</span>
-        <span class="span-value"></span>
-      </div>
-      <div class="field"></div>
-        <span class="span-name">Views</span>
-        <span class="span-value"></span>
-      </div>
-      <div class="field"></div>
-        <span class="span-name">Comments</span>
-        <span class="span-value"></span>
-      </div>
-      <div class="field"></div>
-        <span class="span-name">Downloads</span>
-        <span class="span-value"></span>
-      </div>
-    </div>
-   </li>-->
-    </ul>
+       <ul class="gallery"></ul>
     </div>
 
-    <span class="loader"></span>
+
     <script type="module" src="./main.js"></script>
+    <script type="module" src="./js/pixabay-api.js"></script>
+    <script type="module" src="./js/render-functions.js"></script>
   </body>
 </html>
