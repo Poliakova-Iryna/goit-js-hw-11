@@ -115,7 +115,7 @@ body {
   transform: scale(1.05);
 }
   
-.hidden {
+.is-hidden {
   display: none;
 }
 
@@ -123,57 +123,37 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  display: inline-block;
   position: relative;
-  border: 3px solid;
-  border-color: #FFF #FFF transparent transparent;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  animation: rotate 1s linear infinite;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate (-50%, -50%)
 }
-.loader::after,
-.loader::before {
-  content: '';  
+.loader::before , .loader::after {
+  content: "";
   box-sizing: border-box;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  border: 3px solid;
-  border-color: transparent transparent #FF3D00 #FF3D00;
-  width: 40px;
-  height: 40px;
+  inset: 0px;
   border-radius: 50%;
-  box-sizing: border-box;
-  animation: rotationBack 0.5s linear infinite;
-  transform-origin: center center;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite ;
 }
-.loader::before {
-  width: 32px;
-  height: 32px;
-  border-color: #FFF #FFF transparent transparent;
-  animation: rotation 1s linear infinite;
+.loader::after{
+  border-color: #FF3D00;
+  animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
+  inset: 6px;
 }
-    
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} 
-@keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
 }
-    
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}

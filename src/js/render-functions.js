@@ -2,7 +2,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 export const renderImages = hits => {
-  const imagesBoxEl = document.querySelector('.gallery');
+  const gallery = document.querySelector('.gallery');
   gallery.innerHTML = hits
   .map(
     ({
@@ -32,10 +32,14 @@ export const renderImages = hits => {
 
 export const showLoader = () => {
   const loader = document.querySelector('.loader');
-  loader.style.display = 'block';
+  if (loader) {
+    loader.style.display = 'block';
+  }
 };
 
 export const hideLoader = () => {
   const loader = document.querySelector('.loader');
-  loader.style.display = 'none';
+  if (loader) {
+    loader.style.display = 'none';
+  }
 };
