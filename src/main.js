@@ -18,6 +18,7 @@ searchForm.addEventListener('submit', event  => {
     if(!query) {
         return
     };
+    
 
     showLoader();
 
