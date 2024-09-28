@@ -1,5 +1,5 @@
 import { fetchImages } from "./js/pixabay-api";
-import { renderImages, showLoader, hideLoader } from "./js/render-functions";
+import { renderImages, } from "./js/render-functions";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import iziToast from "izitoast";
@@ -11,6 +11,8 @@ const gallery = new SimpleLightbox('.gallery a', {
     captionDelay: 250,
 });
 
+const loader = document.getElementById('loader');
+
 searchForm.addEventListener('submit', event  => {
     event.preventDefault();
 
@@ -19,8 +21,7 @@ searchForm.addEventListener('submit', event  => {
         return
     };
     
-
-    showLoader();
+    loader.style.display = 'block';
 
     fetchImages(query)
     .then(images => {
@@ -35,6 +36,6 @@ searchForm.addEventListener('submit', event  => {
         });
     })
     .finally(() => {
-        hideLoader();
-    })
-})
+        loader.style.display = 'none';
+    });
+});

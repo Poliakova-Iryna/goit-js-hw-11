@@ -30,16 +30,3 @@ export const renderImages = hits => {
   .join('');
 };
 
-export const showLoader = () => {
-  const loader = document.querySelector('.loader');
-  if (loader) {
-    loader.style.display = 'block';
-  }
-};
-
-export const hideLoader = () => {
-  const loader = document.querySelector('.loader');
-  if (loader) {
-    loader.style.display = 'none';
-  }
-};
